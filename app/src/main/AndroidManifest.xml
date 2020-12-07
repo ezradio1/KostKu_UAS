@@ -15,7 +15,8 @@
 
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity android:name=".EditKostActivity" />
         <activity android:name=".EditProfile" />
         <activity android:name=".geolocation.geoActivity" />
@@ -30,7 +31,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".ui.home.RoomActivity" />
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
@@ -53,6 +53,16 @@
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.ezraaudivano.kostku.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path" />
+        </provider>
+
+        <provider
+            android:name=".GenericFileProvider"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

@@ -29,6 +29,12 @@
         android:label="About Us"
         tools:layout="@layout/fragment_logout" />
 
+    <fragment
+        android:id="@+id/nav_pdf"
+        android:name="com.ezraaudivano.kostku.ui.pdf.PdfFragment"
+        android:label="Download Data"
+        tools:layout="@layout/fragment_pdf" />
+
 
 
 
