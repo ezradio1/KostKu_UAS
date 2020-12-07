@@ -15,25 +15,27 @@
         android:orientation="vertical"
         >
 
+        <ImageView
+            android:layout_width="91dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/icon"></ImageView>
+
         <TextView
             android:id="@+id/tvTambahEditPengumuman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="50dp"
             android:text="FORM PENGUMUMAN"
             android:textStyle="bold"
-            android:textSize="30sp"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <ImageView
-            android:layout_width="91dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/icon"></ImageView>
+
 
         <LinearLayout
             android:layout_width="300dp"
@@ -101,13 +103,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBatal"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="150dp"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="Batal"
@@ -120,7 +123,7 @@
                 android:id="@+id/btnSimpan"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="150dp"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
