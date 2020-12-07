@@ -152,6 +152,7 @@ public class EditKostActivity extends AppCompatActivity {
                 System.out.println("tipe kost 1 : "+getTipeKost);
                 kost = new Kost(emailFB, name, getTipeKost, address, Integer.parseInt(siz), Integer.parseInt(sisaKamar), imageStr);
                 editKost(kost);
+                System.out.println("image edit : " +kost.getImageUrl());
                 startActivity(new Intent(EditKostActivity.this, MenuActivity.class));
                 finish();
             }
@@ -218,6 +219,7 @@ public class EditKostActivity extends AppCompatActivity {
                 }else {
                     params.put("image", "kosong");
                 }
+
 
                 return params;
             }

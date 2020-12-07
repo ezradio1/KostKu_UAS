@@ -64,7 +64,8 @@ public class AddKostActivity extends AppCompatActivity {
     String getTipeKost;
 
     Bundle mBundle;
-    String cek;
+
+    int cek=0;
 
     RadioButton radioEx, radioReg;
     private static final int PERMISSION_CODE = 1000;
@@ -239,7 +240,13 @@ public class AddKostActivity extends AppCompatActivity {
                 params.put("alamat_kost", kostt.getAlamat_kost());
                 params.put("luas_kost", String.valueOf(kostt.getLuas_kost()));
                 params.put("sisa_kamar", String.valueOf(kostt.getSisa_kamar()));
-                params.put("image", kostt.getImageUrl());
+                if(cek==1) {
+                    params.put("image", kostt.getImageUrl());
+                    System.out.println("image adalah "+kostt.getImageUrl());
+                }else {
+                    params.put("image", "kosong");
+                }
+
 
                 return params;
             }
@@ -320,6 +327,7 @@ public class AddKostActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         byte[] byteArray = byteArrayOutputStream .toByteArray();
         imageStr = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        cek=1;
     }
 
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
@@ -336,6 +344,4 @@ public class AddKostActivity extends AppCompatActivity {
         }
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
-
-
 }
