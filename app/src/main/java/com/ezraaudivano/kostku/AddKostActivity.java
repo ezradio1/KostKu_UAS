@@ -192,18 +192,18 @@ public class AddKostActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         final ProgressDialog progressDialog;
-//        progressDialog = new ProgressDialog(this);
-//        progressDialog.setMessage("loading....");
-//        progressDialog.setTitle("Menambahkan Data Kost");
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//        progressDialog.show();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("loading....");
+        progressDialog.setTitle("Menambahkan Data Kost");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
 
         //Memulai membuat permintaan request menghapus data ke jaringan
         StringRequest stringRequest = new StringRequest(POST, KostAPI.URL_ADD, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 //Disini bagian jika response jaringan berhasil tidak terdapat ganguan/error
-//                progressDialog.dismiss();
+                progressDialog.dismiss();
                 try {
                     //Mengubah response string menjadi object
                     JSONObject obj = new JSONObject(response);
@@ -221,7 +221,7 @@ public class AddKostActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //Disini bagian jika response jaringan terdapat ganguan/error
-//                progressDialog.dismiss();
+                progressDialog.dismiss();
                 Toast.makeText(AddKostActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }){
