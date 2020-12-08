@@ -209,7 +209,7 @@ public class EditProfile extends AppCompatActivity {
 
                                 editUser(editName.getText().toString());
                                 Bundle mBundle = new Bundle();
-                                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                                Intent intent = new Intent(EditProfile.this, MenuActivity.class);
                                 mBundle.putString("fullname", viewName);
                                 mBundle.putString("email", vieweEmail);
                                 intent.putExtra("EditProf", mBundle);
