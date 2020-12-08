@@ -16,6 +16,6 @@ public class ActivityUtil {
     public void startUserProfile() {
         Intent i = new Intent(context, MenuActivity.class);
         context.startActivity(i);
-    } 
+    }
 
 }
