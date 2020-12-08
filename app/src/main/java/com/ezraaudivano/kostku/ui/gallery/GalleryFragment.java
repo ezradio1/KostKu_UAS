@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GalleryFragment extends Fragment {
-    User users = new User();
+//    User users = new User();
     private MaterialButton btnNav;
 //    SwitchMaterial btnClick;
 

@@ -61,9 +61,9 @@ public class PengumumanFragment extends Fragment {
                 TambahEditPengumuman tambahEditPengumuman = new TambahEditPengumuman();
                 tambahEditPengumuman.setArguments(data);
 
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager .beginTransaction()
-                        .replace(R.id.frame_view_pengumuman, tambahEditPengumuman)
+                        .replace(R.id.cobaId, tambahEditPengumuman)
                         .commit();
             }
         });

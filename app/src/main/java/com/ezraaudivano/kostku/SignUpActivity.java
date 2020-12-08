@@ -23,6 +23,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.ezraaudivano.kostku.API.KostAPI;
+import com.ezraaudivano.kostku.API.UserAPI;
+import com.ezraaudivano.kostku.model.Kost;
 import com.ezraaudivano.kostku.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -39,7 +47,14 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
+
+import static com.android.volley.Request.Method.POST;
 
 public class SignUpActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
@@ -100,6 +115,8 @@ public class SignUpActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if (task.isSuccessful()) {
+                                                            User user = new User(name, email);
+                                                            tambahUser(user);
                                                             Log.d(TAG, "User profile updated.");
                                                         }
                                                     }
@@ -189,6 +206,57 @@ public class SignUpActivity extends AppCompatActivity {
         }
             return true;
 
+    }
+
+    public void tambahUser(User user){
+        //Tambahkan tambah buku disini
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        final ProgressDialog progressDialog;
+
+        //Memulai membuat permintaan request menghapus data ke jaringan
+        StringRequest stringRequest = new StringRequest(POST, UserAPI.URL_ADD, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Disini bagian jika response jaringan berhasil tidak terdapat ganguan/error
+                try {
+                    //Mengubah response string menjadi object
+                    JSONObject obj = new JSONObject(response);
+                    //obj.getString("message") digunakan untuk mengambil pesan status dari response
+                    finish();
+
+
+                    //obj.getString("message") digunakan untuk mengambil pesan message dari response
+                    Toast.makeText(SignUpActivity.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Disini bagian jika response jaringan terdapat ganguan/error
+                Toast.makeText(SignUpActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams()
+            {
+                /*
+                    Disini adalah proses memasukan/mengirimkan parameter key dengan data value,
+                    dan nama key nya harus sesuai dengan parameter key yang diminta oleh jaringan
+                    API.
+                */
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("fullname", user.getName());
+                params.put("email", user.getEmail());
+
+                return params;
+            }
+        };
+
+        //Disini proses penambahan request yang sudah kita buat ke reuest queue yang sudah dideklarasi
+        queue.add(stringRequest);
     }
 
 

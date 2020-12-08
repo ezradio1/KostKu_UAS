@@ -1,29 +1,38 @@
 package com.ezraaudivano.kostku.model;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.BaseObservable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-@Entity(tableName = "users")
-public class User implements Serializable {
+@Entity
+public class User extends BaseObservable {
 
-    @PrimaryKey(autoGenerate = true)
-    public int id;
+    String name, email;
 
-    @ColumnInfo(name = "email")
-    public  String email;
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 
-    @ColumnInfo(name = "password")
-    public  String password;
+    public String getName() {
+        return name;
+    }
 
-    @ColumnInfo(name = "nama")
-    public String nama;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    @ColumnInfo(name = "telephone")
-    public String telephone;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @ColumnInfo(name = "theme")
     public String theme;
@@ -40,45 +49,5 @@ public class User implements Serializable {
         this.theme = theme;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
 
-
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getNama() {
-        return nama;
-    }
-
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
 }
