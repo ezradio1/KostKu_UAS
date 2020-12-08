@@ -31,24 +31,20 @@
             android:background="@color/startColor">
 
             <TextView
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Data Pengumuman"
                 android:textColor="@color/whiteText"
                 android:textSize="15dp"/>
             <Button
+                android:layout_gravity="center"
                 android:id="@+id/btnCetak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Download Pengumuman"
                 android:background="@drawable/sp_button"/>
-            <!--        <androidx.recyclerview.widget.RecyclerView-->
-            <!--            android:id="@+id/rvPengumuman"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="match_parent"-->
-            <!--            android:background="@color/pastelGreen"-->
-            <!--            android:padding="5dp" />-->
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -69,24 +65,20 @@
             android:background="@color/startColor">
 
             <TextView
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Data Kost"
                 android:textColor="@color/whiteText"
                 android:textSize="15dp"/>
             <Button
+                android:layout_gravity="center"
                 android:id="@+id/btnCetak2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Download Kost"
                 android:background="@drawable/sp_button"/>
-            <!--        <androidx.recyclerview.widget.RecyclerView-->
-            <!--            android:id="@+id/rvPengumuman"-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="match_parent"-->
-            <!--            android:background="@color/pastelGreen"-->
-            <!--            android:padding="5dp" />-->
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

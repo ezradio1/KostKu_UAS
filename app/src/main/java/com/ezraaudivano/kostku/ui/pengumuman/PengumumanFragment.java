@@ -63,7 +63,7 @@ public class PengumumanFragment extends Fragment {
 
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager .beginTransaction()
-                        .replace(R.id.cobaId, tambahEditPengumuman)
+                        .replace(R.id.frame_view_pengumuman, tambahEditPengumuman)
                         .commit();
             }
         });
