@@ -29,6 +29,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.ezraaudivano.kostku.API.KostAPI;
+import com.ezraaudivano.kostku.API.UserAPI;
+import com.ezraaudivano.kostku.model.Kost;
 import com.ezraaudivano.kostku.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -45,11 +53,18 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
+
+import static com.android.volley.Request.Method.PUT;
 
 public class EditProfile extends AppCompatActivity {
     private static final String TAG = "EditProfile";
@@ -64,7 +79,7 @@ public class EditProfile extends AppCompatActivity {
     String viewName,viewTelp,vieweEmail;
 
     User users;
-
+    String idTemp;
     String theme;
 
     private SharedPreferences preferences;
@@ -99,11 +114,7 @@ public class EditProfile extends AppCompatActivity {
         editEmail.setText(emailFB);
         System.out.println(""+nameFB);
 
-
-//        getBundle();
-
-
-
+        getBundle();
 
         StorageReference profileRef = storageReference.child(fAuth.getCurrentUser().getUid()+"profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -189,11 +200,14 @@ public class EditProfile extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
+
                                                     Log.d(TAG, "User profile updated.");
                                                 }
                                             }
                                         });
 
+
+                                editUser(editName.getText().toString());
                                 Bundle mBundle = new Bundle();
                                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                                 mBundle.putString("fullname", viewName);
@@ -331,6 +345,71 @@ public class EditProfile extends AppCompatActivity {
 
 
 
+    }
+
+    public void editUser(String fullName) {
+        //Tambahkan edit buku disini
+
+        //Pendeklarasian queue
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        final ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("loading....");
+        progressDialog.setTitle("Mengubah Data User");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+
+        //Memulai membuat permintaan request menghapus data ke jaringan
+        StringRequest stringRequest = new StringRequest(PUT, UserAPI.URL_UPDATE + emailFB, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Disini bagian jika response jaringan berhasil tidak terdapat ganguan/error
+                progressDialog.dismiss();
+                try {
+                    //Mengubah response string menjadi object
+                    JSONObject obj = new JSONObject(response);
+
+                    //obj.getString("message") digunakan untuk mengambil pesan message dari response
+                    Toast.makeText(EditProfile.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                    finish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Disini bagian jika response jaringan terdapat ganguan/error
+                progressDialog.dismiss();
+                Toast.makeText(EditProfile.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams()
+            {
+                /*
+                    Disini adalah proses memasukan/mengirimkan parameter key dengan data value,
+                    dan nama key nya harus sesuai dengan parameter key yang diminta oleh jaringan
+                    API.
+                */
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("fullname", fullName);
+
+
+
+
+                return params;
+            }
+        };
+
+        //Disini proses penambahan request yang sudah kita buat ke reuest queue yang sudah dideklarasi
+        queue.add(stringRequest);
+    }
+    public void getBundle (){
+        //get Bundle from activity
+        idTemp = getIntent().getStringExtra("id");
     }
 
 
