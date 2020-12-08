@@ -1,4 +1,4 @@
-package com.ezraaudivano.kostku.UnitTest;
+package com.ezraaudivano.kostku.UnitTestUGD;
 
 import org.junit.Before;
 import org.junit.Test;

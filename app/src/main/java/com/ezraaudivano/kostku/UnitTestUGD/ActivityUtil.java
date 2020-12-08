@@ -1,10 +1,9 @@
-package com.ezraaudivano.kostku.UnitTest;
+package com.ezraaudivano.kostku.UnitTestUGD;
 
 import android.content.Context;
 import android.content.Intent;
 
 import com.ezraaudivano.kostku.MenuActivity;
-import com.ezraaudivano.kostku.model.User;
 
 public class ActivityUtil {
     private Context context;
