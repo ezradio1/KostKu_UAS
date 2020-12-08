@@ -1,6 +1,4 @@
-package com.ezraaudivano.kostku.UnitTest;
-
-import com.ezraaudivano.kostku.model.User;
+package com.ezraaudivano.kostku.UnitTestUGD;
 
 public class LoginPresenter {
     private LoginView view;

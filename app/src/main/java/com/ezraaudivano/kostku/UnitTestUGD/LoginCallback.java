@@ -1,4 +1,4 @@
-package com.ezraaudivano.kostku.UnitTest;
+package com.ezraaudivano.kostku.UnitTestUGD;
 
 import com.ezraaudivano.kostku.model.User;
 

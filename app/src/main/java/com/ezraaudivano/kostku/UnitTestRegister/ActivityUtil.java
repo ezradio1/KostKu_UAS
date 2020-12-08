@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.ezraaudivano.kostku.MenuActivity;
-import com.ezraaudivano.kostku.UnitTest.LoginActivity;
-import com.ezraaudivano.kostku.model.User;
+import com.ezraaudivano.kostku.UnitTestUGD.LoginActivity;
 
 public class ActivityUtil {
     private Context context;

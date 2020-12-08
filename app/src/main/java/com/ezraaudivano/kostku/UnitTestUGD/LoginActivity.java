@@ -1,4 +1,4 @@
-package com.ezraaudivano.kostku.UnitTest;
+package com.ezraaudivano.kostku.UnitTestUGD;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +7,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ezraaudivano.kostku.R;
-import com.ezraaudivano.kostku.model.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
