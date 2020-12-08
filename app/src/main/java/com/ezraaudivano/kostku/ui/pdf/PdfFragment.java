@@ -273,7 +273,7 @@ public class PdfFragment extends Fragment {
             docsFolder.mkdir();
             Log.i(TAG, "Direktori baru untuk file pdf berhasil dibuat");
         }
-        String pdfname = "Dokumen_Kost"+".pdf";
+        String pdfname = "Dokumen_KostKu"+".pdf";
         pdfFile = new File(docsFolder.getAbsolutePath()+ '/', pdfname);
 
         OutputStream output = new FileOutputStream(pdfFile);
@@ -350,7 +350,7 @@ public class PdfFragment extends Fragment {
         tableData.setTotalWidth(PageSize.A4.getWidth());
         tableData.setWidthPercentage(100);
         tableData.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
-        int arrLength = listPengumuman.size();
+        int arrLength = listKost.size();
         for(int x=0;x<arrLength;x++){
             for(int i=0;i<cells.length;i++){
                 if(i==0){
@@ -569,8 +569,11 @@ public class PdfFragment extends Fragment {
                         String sisa_kamar            = jsonObject.optString("sisa_kamar");
                         String imageUrl            = jsonObject.optString("image");
 
+
+
                         if(emailPemilik.equalsIgnoreCase(emailFB)) {
                             //Membuat objek user
+                            System.out.println("\n\nNama user : "+nama_kost);
                             Kost kost = new Kost(id, emailFB, nama_kost, tipe_kost, alamat_kost, Integer.parseInt(luas_kost), Integer.parseInt(sisa_kamar), imageUrl);
                             //Menambahkan objek user tadi ke list user
                             listKost.add(kost);
