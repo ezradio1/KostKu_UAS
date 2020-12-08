@@ -281,7 +281,7 @@ public class PdfFragment extends Fragment {
         writer = PdfWriter.getInstance(document, output);
         document.open();
 
-        Paragraph judul = new Paragraph(" Dokumen Pengumuman \n\n", new
+        Paragraph judul = new Paragraph(" Dokumen Kost \n\n", new
                 com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.TIMES_ROMAN, 16,
                 com.itextpdf.text.Font.BOLD, BaseColor.BLACK));
         judul.setAlignment(Element.ALIGN_CENTER);
