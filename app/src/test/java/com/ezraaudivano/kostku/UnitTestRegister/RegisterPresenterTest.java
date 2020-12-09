@@ -110,7 +110,6 @@ public class RegisterPresenterTest {
         System.out.println("Hasil : "+service.getValid(view, view.getEmail(), view.getNama(),
                 view.getPassword() ,view.getRePassword()));
         presenter.onRegisterClicked();
-        //verify(view).startMainActivity();
     }
 
 
